@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'ds-digital';
+  src: url('./fonts/ds-digital/DS-DIGI.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('./fonts/share/ShareTechMono-Regular.ttf') format('truetype');
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: #C2C2D6;
+  user-select: none;
+}
+
+
+.calculator-box{
+  min-width: 320px;
+  border: 2px solid rgb(82, 82, 82);
+  background-color: black;
+  padding: 4px;
+  
+}
+.formula-screen{
+  width: 100%;
+  height: 20px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: #FFA500;
+  font-family: 'ds-digital';
+  font-size: 20px;
+
+}
+.output-screen{
+  width: 100%;
+  height: 35px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: white;
+  font-family: 'ds-digital';
+  font-size: 29px;
+}
+.calculator-btn-box{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, calc(320px / 5));
+  column-gap: 1px; /* Adjusted gap to a more visible value */
+  row-gap: 1px; /* Adjusted gap to a more visible value */
+  font-size: 20px;
+  font-family: 'Share Tech Mono';
+  font-weight: bold;
+  
+}
+.calculator-btn{
+ border: none;
+ color: white;
+ background-color: #4D4D4D;
+}
+.calculator-btn:hover{
+  border: 1px solid#8f8f91;
+}
+#ac{
+  grid-column: span 2;
+  background-color: #AC3939;
+}
+#zero{
+  grid-column: span 2;
+}
+#equals{
+  grid-row: span 2;
+  background-color: #004466;
+}
+.desginer{
+  font-family:  'Share Tech Mono', 'sans';
+  text-align: center;
+  margin-top: 15px;
+}
+.desginer span{
+  text-decoration: none;
+  color: #00264d;
+  line-height: 26px;
+}
