@@ -8,12 +8,11 @@ function App() {
   let sgin = "+-/*";
   let collect = (e) => {
     setValue((pre) => {
-      
-     let firstCheck = sgin.includes(pre.current[0])
+      let firstCheck = sgin.includes(pre.current[0]);
       if (pre.formula == 0) {
         return {
           ...pre,
-          formula:  e.target.value,
+          formula: e.target.value,
           current: e.target.value,
         };
       } else {
@@ -27,21 +26,17 @@ function App() {
   };
   function calculate(e) {
     e.stopPropagation();
-    let justify = !sgin.includes(
-      value.formula[value.formula.length - 1]
-    );
+    let justify = !sgin.includes(value.formula[value.formula.length - 1]);
     if (justify && value.formula) {
       setValue((pre) => {
         return { ...pre, output: evaluate(pre.formula), current: 0 };
       });
-    }else{
+    } else {
       setValue((pre) => {
-        return { ...pre, output: 'NAN', current: 0 };
+        return { ...pre, output: "NAN", current: 0 };
       });
     }
-    
   }
-  console.log(value);
   return (
     <div className="App d-flex align-items-center justify-content-center">
       <div className="calclutor">
@@ -57,7 +52,7 @@ function App() {
               className="calculator-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                setValue({ formula: 0, output: 0,current:0 });
+                setValue({ formula: 0, output: 0, current: 0 });
               }}
             >
               AC
@@ -73,7 +68,11 @@ function App() {
                 );
                 if (value.formula && justify) {
                   setValue((pre) => {
-                    return { ...pre, formula: pre.formula + e.target.value, current: e.target.value };
+                    return {
+                      ...pre,
+                      formula: pre.formula + e.target.value,
+                      current: e.target.value,
+                    };
                   });
                 }
               }}
@@ -91,7 +90,11 @@ function App() {
                 );
                 if (value.formula && justify) {
                   setValue((pre) => {
-                    return { ...pre, formula: pre.formula + e.target.value,current: e.target.value };
+                    return {
+                      ...pre,
+                      formula: pre.formula + e.target.value,
+                      current: e.target.value,
+                    };
                   });
                 }
               }}
@@ -133,11 +136,19 @@ function App() {
                 );
                 if (justify && value.formula == 0) {
                   setValue((pre) => {
-                    return { ...pre, formula: e.target.value,current: e.target.value };
+                    return {
+                      ...pre,
+                      formula: e.target.value,
+                      current: e.target.value,
+                    };
                   });
-                }else if (justify) {
+                } else if (justify) {
                   setValue((pre) => {
-                    return { ...pre, formula: pre.formula + e.target.value,current: e.target.value };
+                    return {
+                      ...pre,
+                      formula: pre.formula + e.target.value,
+                      current: e.target.value,
+                    };
                   });
                 }
               }}
@@ -179,7 +190,11 @@ function App() {
                 );
                 if (value.formula && justify) {
                   setValue((pre) => {
-                    return { ...pre, formula: pre.formula + e.target.value,current: e.target.value };
+                    return {
+                      ...pre,
+                      formula: pre.formula + e.target.value,
+                      current: e.target.value,
+                    };
                   });
                 }
               }}
@@ -230,7 +245,28 @@ function App() {
               value="."
               id="decimal"
               className="calculator-btn"
-              onClick={(e) => collect(e)}
+              onClick={(e) => {
+                e.stopPropagation();
+                let justify = !value.current.toString().includes(".");;
+
+                if (justify && value.formula != 0) {
+                  setValue((pre) => {
+                    return {
+                      ...pre,
+                      formula: pre.formula + e.target.value,
+                      current: pre.current + e.target.value,
+                    };
+                  });
+                }else if (justify && value.formula == 0) {
+                  setValue((pre) => {
+                    return {
+                      ...pre,
+                      formula: e.target.value,
+                      current: e.target.value,
+                    };
+                  })
+                }
+              }}
             >
               .
             </button>
